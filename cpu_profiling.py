@@ -36,8 +36,8 @@ def get_cpu_time():
             if '' in cpu_line :
                 cpu_line.remove('') # First row(cpu) exist '' and Remove ''
             cpu_id = cpu_line[0]
-            cpu_info = [float(item) for item in cpu_line[1:]]
-            user, nice, system, idle, iowait, irq, softriq, guest, guest_nice = cpu_info
+            cpu_line = [float(item) for item in cpu_line[1:]]
+            user, nice, system, idle, iowait, irq, softriq, guest, guest_nice = cpu_line
 
             idle_time = idle + iowait
             non_idle_time = user + nice + system + irq + softirq + steal
