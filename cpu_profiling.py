@@ -37,7 +37,7 @@ def get_cpu_time():
                 cpu_line.remove('') # First row(cpu) exist '' and Remove ''
             cpu_id = cpu_line[0]
             cpu_line = [float(item) for item in cpu_line[1:]]
-            user, nice, system, idle, iowait, irq, softriq, guest, guest_nice = cpu_line
+            user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice = cpu_line
 
             idle_time = idle + iowait
             non_idle_time = user + nice + system + irq + softirq + steal
@@ -60,7 +60,7 @@ def get_cpu_usage_percentage():
     return cpu_usages
 
 def main():
-    get_cpu_usage_percentage()
-
+    result = get_cpu_usage_percentage()
+    print(result)
 if __name__ == '__main__':
     main()
